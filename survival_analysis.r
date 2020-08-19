@@ -1,0 +1,31 @@
+summary(lung1)
+Surv(lung1$time,lung1$status)
+plot(Surv(time,status),xlab="Days survived",ylab="Probability of surviving given patient has survived x days")
+names(lung1)
+summary(lung1)
+survreg(Surv(lung1$time,lung1$status)~lung1$sex)
+summary(survreg(Surv(lung1$time,lung1$status)~lung1$age))
+summary(survreg(Surv(lung1$time,lung1$status)~lung1$sex+lung1$ph.ecog))
+#univariate
+survreg(Surv(lung1$time,lung1$status)~lung1$sex)
+plot(survfit(Surv(lung1$time,lung1$status)~lung1$sex),col=2:3,xlab="Days survived",ylab="Probability of surviving given patient has survived x days")
+legend("topright", legend = c("male","female"), col=2:3, pch=1)
+
+survfit(Surv(lung1$time,lung1$status)~(lung1$ph.ecog))
+plot(survfit(Surv(lung1$time,lung1$status)~lung1$ph.ecog),col=2:5,xlab="Days survived",ylab="Probability of surviving given patient has survived x days")
+legend("topright", legend = c("asymptomatic","symptomatic but completely ambulatory","in bed <50% of the day","in bed > 50% of the day but not bedbound"), col=2:5, pch=1)
+summary(lung1)
+lung1$ph.ecog
+survfit(Surv(lung1$time,lung1$status)~(lung1$ph.karno))
+plot(survfit(Surv(lung1$time,lung1$status)~lung1$ph.karno),col=2:7,xlab="Days survived",ylab="Probability of surviving given patient has survived x days")
+legend("topright", legend = c("50","60","70","80","90","100"), col=2:7, pch=1)
+survfit(Surv(lung1$time,lung1$status)~(lung1$pat.karno))
+summary(survreg(Surv(lung1$time,lung1$status)~(lung1$meal.cal)))
+summary(survreg(Surv(lung1$time,lung1$status)~(lung1$age)))
+summary(survreg(Surv(lung1$time,lung1$status)~(lung1$wt.loss)))
+
+#Cox model
+coxph(Surv(lung1$time,lung1$status)~lung1$sex+lung1$ph.ecog+lung1$ph.karno)
+summary(coxph(Surv(lung1$time,lung1$status)~lung1$sex+lung1$ph.ecog+lung1$))
+coxph(Surv(lung1$time,lung1$status)~lung1$sex+lung1$ph.ecog)
+summary(coxph(Surv(lung1$time,lung1$status)~lung1$sex+lung1$ph.ecog))
