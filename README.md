@@ -2,6 +2,7 @@
 IISc Analytics and Advanced Analytics Assignments
 
 Central Limit Theorem:  Study Central Limit Theorem through numerical experimentation 
+
 Question : http://mgmt.iisc.ac.in/CM/MG221/Assignments/assignment1.pdf
 
 Various Samples statistics of various Probability distributions were computed multiple times with different parameters. Graphical techniques such as histogram, box and whisker plot and Normal Probability plot were employed to see whether these sample statistics achieve Normal distribution or not and if it does, what is the minimum sample size for which the normality is achieved. 
